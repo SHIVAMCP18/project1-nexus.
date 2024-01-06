@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <style>
+        
+body {
+  font-family: Arial, sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  margin: 0;
+}
+
+.signup {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 300px;
+    margin-top: 2%;
+    padding: 30px 50px 50px 45px;
+    max-height: 360px;
+}
+
+button {
+  background-color: #4caf50;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin: 15px;
+  margin-left: 50px;
+}
+button:hover {
+  background-color: #45a049;
+  box-shadow: 0 0 5px cyan,
+  0 0 25px cyan,0 0 50px cyan,
+  0 0 100px cyan,0 0 20px cyan;
+}
+
+    </style>
+</head>
+
+<body>
+    <div class="signup">
+        <h2>Sign Up</h2>
+        <form id="signupForm" onsubmit="submitForm(event)">
+            <input type="text" name="Firstname" size="25" placeholder="Firstname" required><br><br>
+            <input type="text" name="Lastname" size="25" placeholder="Lastname" required><br><br>
+            <textarea name="Address" rows="5" cols="25" placeholder="Address" required></textarea><br><br>
+            <input type="tel" id="phoneNumber" size="25" placeholder="Enter phone number" required><br><br>
+            <input type="email" name="Email" size="25" placeholder="Email" required><br>
+
+            <h2>
+                <button type="submit" id="submit">Submit</button>
+            </h2>
+        </form>
+    </div>
+
+    <script>
+        function submitForm(event) {
+            event.preventDefault();
+
+            var firstNameInput = document.getElementsByName('Firstname')[0];
+            var lastNameInput = document.getElementsByName('Lastname')[0];
+            var addressInput = document.getElementsByName('Address')[0];
+            var phoneNumberInput = document.getElementById('phoneNumber');
+            var emailInput = document.getElementsByName('Email')[0];
+
+            if (
+                firstNameInput.checkValidity() &&
+                lastNameInput.checkValidity() &&
+                addressInput.checkValidity() &&
+                phoneNumberInput.checkValidity() &&
+                emailInput.checkValidity()
+            ) {
+                var phoneNumber = phoneNumberInput.value.replace(/[^0-9]/g, '');
+
+                if (phoneNumber.length === 10) {
+                    alert("Your Application Is Submitted");
+                } else {
+                    alert("Please enter a 10-digit phone number.");
+                }
+            } else {
+                alert("Please fill in all the required fields.");
+            }
+        }
+    </script>
+</body>
+
+</html>
